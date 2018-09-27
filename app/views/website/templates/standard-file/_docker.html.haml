@@ -1,0 +1,145 @@
+%p These instructions make the following assumptions:
+%ul
+  %li
+    %p You’ve just finished setting up a Linux server (say, Ubuntu 16.04 64-bit) and have installed Docker on it.
+  %li
+    %p You’ve configured your security groups to allow for incoming SSH connections from your local IP.
+  %li
+    %p You’ve configured a domain name (or subdomain) to point to your server’s IP address.
+  %li
+    %p You’ve configured the DNS to enable HTTPS for your domain (say, using Cloudflare).
+%h3 Getting started
+%ol
+  %li
+    %p SSH into your new server:
+    %pre
+      %code.language-bash
+        :preserve
+          $ ssh -l {user} {IP to the server}
+  %li
+    %p Update your system:
+    %pre
+      %code.language-bash
+        :preserve
+          $ sudo apt-get update
+          $ sudo apt-get upgrade
+  %li
+    %p Install git
+    %pre
+      %code.language-bash
+        :preserve
+          $ sudo apt-get update
+          $ sudo apt-get install -y git
+  %li
+    %p
+      Make sure you are in your home directory and clone the Standard File
+      %a{:href => "https://github.com/standardfile/ruby-server"} ruby-server
+      project:
+    %pre
+      %code.language-bash
+        :preserve
+          $ cd ~
+          $ git clone https://github.com/standardfile/ruby-server.git
+          $ cd ruby-server
+  %li
+    %p Create .env.{app|db}.production files in the project’s root directory. Add environment variables (see Environment variables for full listing):
+    %pre
+      %code.language-bash
+        :preserve
+          $ cd $PROJECT_ROOT/docker/environments/
+          $ cp .env.app.producion.template .env.app.production
+          $ vim .env.app.production
+    %p Insert:
+    %pre
+      %code
+        :preserve
+          RAILS_ENV=production
+          SECRET_KEY_BASE=use "bundle exec rake secret"
+          RAILS_SERVE_STATIC_FILES=true
+
+          DB_HOST=localhost
+          DB_PORT=3306
+          DB_DATABASE=items
+          DB_USERNAME=root
+          DB_PASSWORD=
+
+          SALT_PSEUDO_NONCE=use "bundle exec rake secret"
+    %pre
+      %code.language-bash
+        :preserve
+          $ cd $PROJECT_ROOT/docker/environments/
+          $ cp .env.db.producion.template .env.db.production
+          $ vim .env.db.production
+    %p Insert:
+    %pre
+      %code
+        :preserve
+          MYSQL_ROOT_PASSWORD=
+  %li
+    %p Build the services, without starting them:
+    %pre
+      %code.language-bash
+        :preserve
+          $ docker-compose build
+  %li
+    %p Run the app service to compile the assets:
+    %pre
+      %code.language-bash
+        :preserve
+          $ docker-compose -f docker-compose.yml -f docker-compose.production.yml up app
+          $ docker ps
+          $ docker exec -it {container ID/name of the app service} /bin/bash
+          app> bundle exec rake assets:precompile
+    %p
+      At this point the precompiled assets are stored in the
+      %code public/
+      folder of the host. Nginx container will mount the folder as volume
+      and get the assets.
+    %pre
+      %code.language-bash
+        :preserve
+          $ docker-compose down
+  %li
+    %p Start the services:
+    %pre
+      %code.language-bash
+        :preserve
+          $ docker-compose -f docker-compose.yml -f docker-compose.production.yml up -d
+  %li
+    %p
+      Login to the
+      %code app
+      service to initialize project:
+    %pre
+      %code.language-bash
+        :preserve
+          $ docker ps
+          $ docker exec -it {container ID/name of the app service} /bin/bash
+          app> bundle exec rake db:create db:migrate
+  %li
+    %p Access the server locally:
+%pre
+  %code.language-bash
+    :preserve
+      $ curl {domain name}
+      <!doctype html>
+      <html>
+        ...
+        <body>
+          <h1> Hi! You're not supposed to be here. </h1>
+
+          <p> You might be looking for the <a href="https://app.standardnotes.org"> Standard Notes Web App</a> or the main <a href="https://standardnotes.org"> Standard Notes Website</a>. </p>
+
+        </body>
+      </html>
+%ol{:start => "9"}
+  %li You’re done!
+%h2 Using your new server
+%p
+  You can immediately start using your new server by using the Standard Notes app at
+  = succeed "." do
+    %a{:href => "https://app.standardnotes.org"} https://app.standardnotes.org
+%p In the account menu, enter the address of your new server and press Change Server:
+%p
+  %img{:alt => "sn-account-menu", :src => "http://imgur.com/Pre6ffL.png"}/
+%p Then, register for a new account, and begin using your private new secure Standard File server!

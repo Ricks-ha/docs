@@ -1,2 +1,7 @@
-- @menu_structure.each do |section|
-  %a #{section[:title]}
+#side-menu
+  - @menu_structure.each do |section|
+    %h2= section[:title]
+    %ul
+      - section[:pages].each do |page|
+        %li
+          %a{"href" => "/#{page[:path]}"} #{page[:title]}
