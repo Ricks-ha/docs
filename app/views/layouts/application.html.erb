@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Docs</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div id="application-wrapper">
+      <%= render partial: "shared/header" %>
+      <div id="content-wrapper">
+        <%= yield %>
+      </div>
+      <%= render partial: "shared/side-menu" %>
+    </div>
+  </body>
+</html>
