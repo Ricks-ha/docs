@@ -4,20 +4,49 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# OS & IDE
+.DS_Store
+
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
 !/log/.keep
-!/tmp/.keep
+/tmp
 
+/config/cap.yml
+
+/app/assets/templates/generated/
+
+# Ignore bower components
+/vendor/assets/bower_components/
 /node_modules
-/yarn-error.log
+/vendor/assets/javascripts/dashboard/app.js
+/vendor/assets/javascripts/dashboard/compiled.js
+/vendor/assets/javascripts/dashboard/transpiled.js
+/vendor/assets/javascripts/dashboard/compiled.min.js
+/vendor/assets/javascripts/dashboard/lib.js
+/vendor/assets/javascripts/dashboard/templates.js
 
-.byebug_history
+/vendor/assets/stylesheets/dashboard/app.css
+/vendor/assets/stylesheets/dashboard/app.css.map
+/vendor/assets/stylesheets/app.css
+/vendor/assets/stylesheets/app.css.map
+
+/app/views/email_campaigns/generated/
+
+/.sass-cache
+
+# Ignore ENV variables config
+.env
+.ssh
+
+dump.rdb
+
+# Ignore compiled assets
+/public/assets
+
+# Ignore user uploads
+/public/uploads/*
+!/public/uploads/.keep

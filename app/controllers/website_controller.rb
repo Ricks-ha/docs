@@ -16,7 +16,11 @@ class WebsiteController < ApplicationController
     @menu_structure.each do |section|
       section[:pages].each do |page|
         if page[:path] == path
-          @template_path = "#{root_path}/#{page[:template]}"
+          if page[:template]
+            @template_path = "#{root_path}/#{page[:template]}"
+          elsif page[:markdown]
+            @template_content = render_markdown_file(page[:markdown])
+          end
           @title = page[:title]
         end
       end
@@ -32,24 +36,93 @@ class WebsiteController < ApplicationController
         title: "Standard File",
         pages: [
           {
+            title: "Intro to Standard File",
+            markdown: "standard-file/intro.md"
+          },
+          {
+            title: "Getting Started with Self Hosting",
+            markdown: "standard-file/getting-started.md"
+          },
+          {
             title: "Self Hosting with EC2 and Nginx",
-            template: "standard-file/ec2-nginx.html"
+            markdown: "standard-file/ec2-nginx.md"
           },
           {
             title: "Self Hosting with Docker",
-            template: "standard-file/docker.html"
+            markdown: "standard-file/docker.md"
           },
+          {
+            title: "Self Hosting on AWS with a Preconfigured Image",
+            markdown: "standard-file/preconfigured-image.md"
+          },
+          {
+            title: "Self Hosting with Heroku",
+            markdown: "standard-file/heroku.md"
+          },
+          {
+            title: "Client Development Guide",
+            markdown: "standard-file/client-development.md"
+          }
         ]
       },
       {
         title: "Extensions",
         pages: [
-
+          {
+            title: "Intro to Extensions",
+            markdown: "extensions/intro.md"
+          },
+          {
+            title: "Components",
+            markdown: "extensions/components.md"
+          },
+          {
+            title: "Themes",
+            markdown: "extensions/themes.md"
+          },
+          {
+            title: "Actions",
+            markdown: "extensions/actions.md"
+          },
+          {
+            title: "Publishing",
+            markdown: "extensions/publishing.md"
+          },
         ]
       }
     ]
 
     compute_paths_for_structure(@menu_structure)
+  end
+
+
+  def render_markdown_file(path)
+    absolute_path = "#{Rails.root}/app/views/website/markdown/#{path}"
+    file_content = File.read(absolute_path)
+    options = {
+      filter_html:     false,
+      hard_wrap:       true,
+      link_attributes: { target: "_blank" },
+      space_after_headers: true,
+      fenced_code_blocks: true,
+      prettify: true
+    }
+
+    extensions = {
+      autolink:           true,
+      superscript:        true,
+      disable_indented_code_blocks: true,
+      fenced_code_blocks: true,
+      lax_spacing: true,
+      tables: true,
+      footnotes: true,
+      highlight: true
+    }
+
+    renderer = CustomRender.new(options)
+    markdown = Redcarpet::Markdown.new(renderer, extensions)
+
+    return markdown.render(file_content).html_safe
   end
 
   def compute_paths_for_structure(structure)
@@ -61,5 +134,10 @@ class WebsiteController < ApplicationController
     end
   end
 
+end
 
+class CustomRender < Redcarpet::Render::HTML
+  require 'rouge'
+  require 'rouge/plugins/redcarpet'
+  include Rouge::Plugins::Redcarpet
 end

@@ -1,7 +1,11 @@
-- if @template_path
-
+- if @template_path || @template_content
   - content_for :head do
     %title= @title
 
-  %h2= @title
-  = render partial: "#{@template_path}"
+  %h1= @title
+
+#template-content
+  - if @template_path
+    = render partial: "#{@template_path}"
+  - else
+    #{@template_content}
