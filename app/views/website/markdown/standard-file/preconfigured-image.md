@@ -14,9 +14,11 @@ You should also have a domain or subdomain you'll be using for the server.
 
 5. Go through the wizard with the default options. Don't press the blue "Review and Launch" button, as that will skip some steps. When you arrive at the step "Configure Security Group", you need to add 3 rules:
 
-	- SSH - Port 22 - Source: Choose "My IP"
-	- HTTP - Port 80 - Source: Anywhere
-	- HTTPS - Port 443 - Source: Anywhere
+	| Key | Port | Description |
+	| :--- | :--- | :--- |
+	| SSH |  22 | Source: Choose "My IP" |
+	| HTTP | 80 | Source: Anywhere |
+	| HTTPS | 443 | Source: Anywhere |
 
 6. Make sure to download your private key at the end.
 

@@ -10,18 +10,24 @@ In this example, we'll use our blank-slate AngularJS template to build a utility
 
 1. Clone the [blank-slate](https://github.com/sn-extensions/blank-slate) project from GitHub:
 
-		git clone https://github.com/sn-extensions/blank-slate.git
+	``` bash
+	git clone https://github.com/sn-extensions/blank-slate.git
+	```
 
 2. Build the project:
 
-		npm install
-		bower install
-		grunt
-		grunt watch
+	``` bash
+	npm install
+	bower install
+	grunt
+	grunt watch
+	```
 
 3. Start a local web server to host the app. Here we'll use Python's SimpleHTTPServer:
 
-		python -m SimpleHTTPServer 8000
+	``` bash
+	python -m SimpleHTTPServer 8000
+  ```		
 
 
 Open `localhost:8000` in your browser. You should see the text "Blank Slate" on the page.
@@ -31,44 +37,54 @@ Open `localhost:8000` in your browser. You should see the text "Blank Slate" on 
 
 1. In order to count the number of words in a note, the component needs access to the "working note", or the note the user is currently editing. In `app/js/controllers/home.js`, uncomment the relevant parts of the permissions so it looks like this:
 
-		var permissions = [
-			{
-				name: "stream-context-item"
-			}
-		]
+	``` javascript
+	var permissions = [
+		{
+			name: "stream-context-item"
+		}
+	]
+	```
 
 
 2. Uncomment the function `streamContextItem` so it looks like this:
 
-		componentManager.streamContextItem(function(item){
-			// perform updates in $timeout so Angular can $apply()
-			$timeout(function(){
-				$scope.item = item;
-			})
+	``` javascript
+	componentManager.streamContextItem(function(item){
+		// perform updates in $timeout so Angular can $apply()
+		$timeout(function(){
+			$scope.item = item;
 		})
+	})
+	```
 
 Whenever a change is made to the working note, the block in that function will be called automatically.
 
 3. Under `$scope.item = item;`, add
 
-		$scope.analyzeNote($scope.item);
+	``` javascript
+	$scope.analyzeNote($scope.item);
+	```
 
 4. Create a function `analyzeNote` that will count the number of words in the note.
 
-		$scope.analyzeNote = function(note) {
-			var s = note.content.text;
-			s = s.replace(/(^\s*)|(\s*$)/gi,"");//exclude  start and end white-space
-			s = s.replace(/[ ]{2,}/gi," ");//2 or more space to 1
-			s = s.replace(/\n /,"\n"); // exclude newline with a start spacing
+	``` javascript
+	$scope.analyzeNote = function(note) {
+		var s = note.content.text;
+		s = s.replace(/(^\s*)|(\s*$)/gi,"");//exclude  start and end white-space
+		s = s.replace(/[ ]{2,}/gi," ");//2 or more space to 1
+		s = s.replace(/\n /,"\n"); // exclude newline with a start spacing
 
-			$scope.wordCount = s.split(' ').length;
-		}
+		$scope.wordCount = s.split(' ').length;
+	}
+	```
 
 5. Open `app/templates/home.html.haml` and add this line:
 
-		%p
-			Word Count:
-			%strong {{wordCount}}
+	``` haml
+	%p
+		Word Count:
+		%strong {{wordCount}}
+	```
 
 (Haml uses indentation to parse the text. Make sure tabs are preserved when you copy)
 
@@ -80,7 +96,7 @@ See [Publishing](/extensions/publishing.html).
 
 If you'd like to see the finished product, switch to the `word-count` branch:
 
-```
+``` bash
 git checkout word-count
 ```
 
@@ -88,10 +104,12 @@ git checkout word-count
 
 Areas tell Standard Notes where to display a particular component. The current list of available areas are:
 
-- `tags-list`: replaces the tags pane with a custom component. We use this for the Folders component.
-- `note-tags`: replaces the editor pane's tags area with a custom component. We use this for autocomplete tags.
-- `editor-stack`: adds custom-sized components in a stack in the editor pane. This does not replace any native modules but simply adds layers on top of the editor pane. We use this for the Action Bar and GitHub Push components.
-- `editor-editor`: replaces the plain text editor with a custom editor. We use this for all of our editors, including Markdown, Code, and Plus.
+| Key | Description |
+| :--- | :--- |
+| `tags-list` | replaces the tags pane with a custom component. We use this for the Folders component. |
+| `note-tags` | replaces the editor pane's tags area with a custom component. We use this for autocomplete tags. |
+| `editor-stack` | adds custom-sized components in a stack in the editor pane. This does not replace any native modules but simply adds layers on top of the editor pane. We use this for the Action Bar and GitHub Push components. |
+| `editor-editor` | replaces the plain text editor with a custom editor. We use this for all of our editors, including Markdown, Code, and Plus. |
 
 ## Next Steps
 

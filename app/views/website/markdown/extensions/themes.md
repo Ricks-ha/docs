@@ -12,7 +12,7 @@ Mobile themes offer control mostly on colors. They are simply JSON files hosted 
 
 ### JSON Format:
 
-```
+``` json
 {
   name: "Midnight",
   constants: {

@@ -24,6 +24,12 @@ strong, b {
   justify-content: space-between;
   align-items: center;
 
+  #title {
+    a {
+      color: inherit;
+    }
+  }
+
   @include MQ-SmallAndLess() {
     display: block;
   }

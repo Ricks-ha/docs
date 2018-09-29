@@ -12,20 +12,22 @@
 
 1. Add 4 new variables:
 
-	- `DB_HOST`: Use the "Host" value from your JawsDB dashboard.
-	- `DB_DATABASE`: In your JawsDB dashboard, you should see at the top "Connection String". Copy the part after "3306/". That will be the name of your database.
-	- `DB_USERNAME`: Use the "Username" value.
-	- `DB_PASSWORD`: Use the "Password" value.
+	| Key | Description |
+	| :--- | :--- |
+	| `DB_HOST` | Use the "Host" value from your JawsDB dashboard. |
+	| `DB_DATABASE` | In your JawsDB dashboard, you should see at the top "Connection String". Copy the part after "3306/". That will be the name of your database. |
+	| `DB_USERNAME` | Use the "Username" value. |
+	| `DB_PASSWORD` | Use the "Password" value. |
 
 1. Restart your Heroku instance using either the web interface (you'll find this option under "More" in the top right) or using the command line:
 
-	```
+	``` bash
 	heroku restart --app name_of_app
 	```
 
 1. Perform initial database setup:
 
-	```
+	``` bash
 	heroku run rake db:migrate --app name_of_app
 	```
 

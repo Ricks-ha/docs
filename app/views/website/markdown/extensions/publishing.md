@@ -6,7 +6,7 @@ The JSON description must be hosted on a URL the app can reach out to. In these 
 
 1. Create a new note in Standard Notes called "my-extension.json", and enter the following as its contents:
 
-```
+``` json
 ---
 metatype: json
 ---
@@ -65,7 +65,7 @@ By default, Standard Notes will look for the `index.html` file located in the ro
 
 2. Add the following entry anywhere in the root level of `package.json`:
 
-```
+``` json
 ...
   "sn": {
     "main": "relative/path/to/index.html"
