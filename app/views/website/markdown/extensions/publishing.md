@@ -12,17 +12,17 @@ metatype: json
 ---
 
 {
-        "identifier": "org.yourdomain.my-markdown-editor",
-        "name": "My Markdown Editor",
-        "content_type": "SN|Component",
-        "area": "editor-editor",
-        "version": "1.0.0",
-        "description": "A fully featured Markdown editor that supports live preview, a styling toolbar, and split pane support.",
-        "url": "https://domain.org/link-to-hosted-extension",
-        "download_url": "https://github.com/sn-extensions/advanced-markdown-editor/archive/1.0.184.zip",
-        "latest_url": "https://listed.standardnotes.org/my-extension-json-link",
-        "marketing_url": "https://standardnotes.org/extensions/advanced-markdown",
-        "thumbnail_url": "https://domain.org/editors/adv-markdown.jpg"
+  "identifier": "org.yourdomain.my-markdown-editor",
+  "name": "My Markdown Editor",
+  "content_type": "SN|Component",
+  "area": "editor-editor",
+  "version": "1.0.0",
+  "description": "A fully featured Markdown editor that supports live preview, a styling toolbar, and split pane support.",
+  "url": "https://domain.org/link-to-hosted-extension",
+  "download_url": "https://github.com/sn-extensions/advanced-markdown-editor/archive/1.0.184.zip",
+  "latest_url": "https://listed.standardnotes.org/my-extension-json-link",
+  "marketing_url": "https://standardnotes.org/extensions/advanced-markdown",
+  "thumbnail_url": "https://domain.org/editors/adv-markdown.jpg"
 }
 ```
 
