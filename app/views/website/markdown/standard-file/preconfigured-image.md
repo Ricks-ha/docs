@@ -30,36 +30,48 @@ You should also have a domain or subdomain you'll be using for the server.
 ## Configuring the server
 1. SSH into the server using the IP address you retrieved above:
 
-		ssh -i /path/to/key.pem ec2-user@ipaddress
+	``` bash
+	ssh -i /path/to/key.pem ec2-user@ipaddress
+	```		
 
 1. Start the MySQL server:
 
-		sudo service mysqld start
+	``` bash
+	sudo service mysqld start
+	```
 
 	Note that the MySQL server is setup with username `root` and password `root`. Feel free to change this.
 
 1. Edit your nginx config:
 
-		sudo vim /opt/nginx/conf/nginx.conf
+	``` bash
+	sudo vim /opt/nginx/conf/nginx.conf
+	```		
 
 	Replace domain.com in `server_name domain.com;` with your domain or subdomain.
 
 1. Set up a free HTTPS certificate with LetsEncrypt (required)
 
-		/opt/letsencrypt/letsencrypt-auto certonly --standalone --debug
+	``` bash
+	/opt/letsencrypt/letsencrypt-auto certonly --standalone --debug
+	```
 
 1. Go back and edit the nginx.conf file:
 
 	In the `server` bracket, uncomment these two lines by removing the `#` symbol.
 
-		# ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;
-		# ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem;
+	``` nginx
+	# ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;
+	# ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem;
+	```
 
 	**Change domain.com with your domain.**
 
 1. Start nginx:
 
-		sudo /opt/nginx/sbin/nginx
+	``` bash
+	sudo /opt/nginx/sbin/nginx
+ 	```
 
 And that's it! You should be all set. Use your new server to register using Standard Notes.
 
@@ -68,7 +80,9 @@ Some tips on maintenance:
 
 1. If you modify your nginx conf file, you need to reload nginx for changes to take effect:
 
-		sudo /opt/nginx/sbin/nginx -s reload
+	``` bash
+	sudo /opt/nginx/sbin/nginx -s reload
+	```		
 
 2. Your HTTPS cert expires after about 3 months. You can renew it by running the LetsEncrypt wizard step from above.
 
