@@ -33,35 +33,27 @@ class WebsiteController < ApplicationController
   def build_menu
     @menu_structure = [
       {
-        title: "Standard File",
+        title: "Self Hosting",
         pages: [
           {
-            title: "Intro to Standard File",
-            markdown: "standard-file/intro.md"
-          },
-          {
             title: "Getting Started with Self Hosting",
-            markdown: "standard-file/getting-started.md"
+            markdown: "self-hosting/getting-started.md"
           },
           {
             title: "Self Hosting with EC2 and Nginx",
-            markdown: "standard-file/ec2-nginx.md"
+            markdown: "self-hosting/ec2-nginx.md"
           },
           {
             title: "Self Hosting with Docker",
-            markdown: "standard-file/docker.md"
+            markdown: "self-hosting/docker.md"
           },
           {
             title: "Self Hosting on AWS with a Preconfigured Image",
-            markdown: "standard-file/preconfigured-image.md"
+            markdown: "self-hosting/preconfigured-image.md"
           },
           {
             title: "Self Hosting with Heroku",
-            markdown: "standard-file/heroku.md"
-          },
-          {
-            title: "Client Development Guide",
-            markdown: "standard-file/client-development.md"
+            markdown: "self-hosting/heroku.md"
           }
         ]
       },
@@ -73,8 +65,12 @@ class WebsiteController < ApplicationController
             markdown: "extensions/intro.md"
           },
           {
-            title: "Components",
-            markdown: "extensions/components.md"
+            title: "Building an Extension",
+            markdown: "extensions/building-an-extension.md"
+          },
+          {
+            title: "Local Setup",
+            markdown: "extensions/local-setup.md"
           },
           {
             title: "Themes",
@@ -88,6 +84,20 @@ class WebsiteController < ApplicationController
             title: "Publishing",
             markdown: "extensions/publishing.md"
           },
+        ]
+      },
+
+      {
+        title: "Standard File",
+        pages: [
+          {
+            title: "Intro to Standard File",
+            markdown: "standard-file/intro.md"
+          },
+          {
+            title: "Client Development Guide",
+            markdown: "standard-file/client-development.md"
+          }
         ]
       }
     ]

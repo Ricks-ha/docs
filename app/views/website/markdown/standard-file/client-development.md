@@ -2,7 +2,7 @@
 
 This guide walks through the essentials of building an application that consumes a Standard File API. This code is based on the Standard Notes client, and uses a non-compileable Javascript-ish pseudocode.
 
-For the full specification, see the [Standard File guide](http://standardfile.org/).
+For the full specification, see the [Standard File guide](https://standardfile.org/).
 
 ### Authentication
 To authenticate a user, we need to make a request to the server to retrieve the password derivation parameters used to generate the user's password. This information is public, and can be retrieved by a GET call to `/auth/params` with `email` as a paramter:
@@ -17,8 +17,8 @@ getAuthParamsForEmail(email, callback) {
 ```
 
 Auth params include:
-- pw_salt (fed to pw_func)
-- pw_cost (the number of iterations for the kdf)
+- pw\_salt (fed to pw\_func)
+- pw\_cost (the number of iterations for the kdf)
 
 
 Next, compute the user's password and encryption keys using the user's text field inputted password, the `pw_salt` and `pw_cost` fields as received earlier, and a `PBKDF2` output length of 768 bits:

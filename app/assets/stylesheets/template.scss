@@ -40,4 +40,10 @@
       background-color: #f6f6f6;
     }
   }
+
+  ul {
+    li:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
 }
