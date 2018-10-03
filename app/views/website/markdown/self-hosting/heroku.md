@@ -1,10 +1,10 @@
 1. Configure the Heroku Command Line Interface (CLI) using these steps: [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 
-1. Deploy the Standard File server to your account using this deploy link: https://heroku.com/deploy?template=https://github.com/standardfile/ruby-server.
+1. Deploy the Standard File server to your account using the following deploy link: https://heroku.com/deploy?template=https://github.com/standardfile/ruby-server
 
-1. Install a MySQL addon. Here we'll use the JawsDB addon: https://elements.heroku.com/addons/jawsdb. If you already have a database, you can skip this step.
+1. Install a MySQL add-on. Here we'll use the JawsDB add-on: https://elements.heroku.com/addons/jawsdb. If you already have a database, you can skip this step.
 
-1. After installing JawsDB, choose it from the addons list in your Heroku dashboard. This will take you to your JawsDB dashboard. You'll need the information found here for the next step.
+1. After installing JawsDB, choose it from the add-ons list in your Heroku dashboard. This will take you to your JawsDB dashboard. You'll need the information found here for the next step.
 
 1. In your Heroku application, choose the "Settings" tab.
 
