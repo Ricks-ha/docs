@@ -201,6 +201,7 @@ Note: You can skip most of these steps by using our public AMI. See the followin
 1. You're done!
 
 ## Using your new server
+
 You can immediately start using your new server by using the Standard Notes app at https://app.standardnotes.org.
 
 In the Account menu, enter the address of your new server in "Sync Server Domain" under "Advanced Options".
