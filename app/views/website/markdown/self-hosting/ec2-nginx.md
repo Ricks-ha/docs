@@ -110,7 +110,7 @@ Note: you can skip most of these steps by using our public AMI. See this guide f
 1. Set up HTTPS/SSL for your server (free using LetsEncrypt) (required if using the secure client on https://app.standardnotes.org):
 
 	``` bash
-  sudo chown ec2-user /opt
+        sudo chown ec2-user /opt
 	cd /opt
 	git clone https://github.com/letsencrypt/letsencrypt
 	cd letsencrypt
