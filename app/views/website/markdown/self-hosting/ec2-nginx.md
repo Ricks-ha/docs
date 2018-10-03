@@ -5,7 +5,7 @@ These instructions make the following assumptions:
 
 - You've configured a domain name (or subdomain) to point to your server's IP address.
 
-Note: you can skip most of these steps by using our public AMI. See this guide for more details: [Deploying a Standard File server on AWS with a pre configured image](https://github.com/standardfile/ruby-server/wiki/Deploying-a-Standard-File-server-on-AWS-with-a-pre-configured-image)
+Note: You can skip most of these steps by using our public AMI. See the following guide for more details: [Deploying a Standard File server on AWS with a pre configured image](https://github.com/standardfile/ruby-server/wiki/Deploying-a-Standard-File-server-on-AWS-with-a-pre-configured-image)
 
 ### Getting started
 
