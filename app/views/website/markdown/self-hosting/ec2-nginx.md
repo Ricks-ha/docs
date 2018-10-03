@@ -1,5 +1,5 @@
 These instructions make the following assumptions:
-- You've just finished using the AWS web console to launch an EC2 server with a 64 bit version of Amazon Linux AMI with **at least 1GB of memory**.
+- You've just finished using the AWS web console to launch an EC2 server with a 64 bit version of Amazon Linux AMI with **at least 1 GB of memory**.
 
 - You've configured your security groups to allow for incoming SSH connections from your local IP.
 
