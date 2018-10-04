@@ -1,11 +1,11 @@
 These instructions make the following assumptions:
-- You've just finished using the AWS web console to launch an EC2 server with a 64 bit version of Amazon Linux AMI with **at least 1GB of memory**.
+- You've just finished using the AWS web console to launch an EC2 server with a 64 bit version of Amazon Linux AMI with **at least 1 GB of memory**.
 
 - You've configured your security groups to allow for incoming SSH connections from your local IP.
 
 - You've configured a domain name (or subdomain) to point to your server's IP address.
 
-Note: you can skip most of these steps by using our public AMI. See this guide for more details: [Deploying a Standard File server on AWS with a pre configured image](https://github.com/standardfile/ruby-server/wiki/Deploying-a-Standard-File-server-on-AWS-with-a-pre-configured-image)
+Note: You can skip most of these steps by using our public AMI. See the following guide for more details: [Deploying a Standard File server on AWS with a pre configured image](https://github.com/standardfile/ruby-server/wiki/Deploying-a-Standard-File-server-on-AWS-with-a-pre-configured-image)
 
 ### Getting started
 
@@ -110,7 +110,7 @@ Note: you can skip most of these steps by using our public AMI. See this guide f
 1. Set up HTTPS/SSL for your server (free using LetsEncrypt) (required if using the secure client on https://app.standardnotes.org):
 
 	``` bash
-  sudo chown ec2-user /opt
+	sudo chown ec2-user /opt
 	cd /opt
 	git clone https://github.com/letsencrypt/letsencrypt
 	cd letsencrypt
@@ -201,6 +201,7 @@ Note: you can skip most of these steps by using our public AMI. See this guide f
 1. You're done!
 
 ## Using your new server
+
 You can immediately start using your new server by using the Standard Notes app at https://app.standardnotes.org.
 
 In the Account menu, enter the address of your new server in "Sync Server Domain" under "Advanced Options".

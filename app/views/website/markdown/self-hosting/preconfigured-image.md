@@ -10,7 +10,7 @@ You should also have a domain or subdomain you'll be using for the server.
 
 3. You should see the Standard File AMI result in the list. Select the checkbox to the left of it, and press the blue "Launch" button on top.
 
-4. Choose an Instance Type. The minimum you should use is the t2.micro, which has 1GB memory. Anything less and you'll run into problems.
+4. Choose an Instance Type. The minimum you should use is the t2.micro, which has 1 GB memory. Anything less and you'll run into problems.
 
 5. Go through the wizard with the default options. Don't press the blue "Review and Launch" button, as that will skip some steps. When you arrive at the step "Configure Security Group", you need to add 3 rules:
 
