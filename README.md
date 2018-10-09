@@ -1,3 +1,3 @@
 # Standard Notes Documentation
 
-Viewable at https://docs.standardnotes.org/
+Viewable at https://docs.standardnotes.org
