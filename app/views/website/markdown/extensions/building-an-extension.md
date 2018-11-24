@@ -114,6 +114,7 @@ Areas tell Standard Notes where to display a particular component. The current l
 | `note-tags` | replaces the editor pane's tags area with a custom component. We use this for autocomplete tags. |
 | `editor-stack` | adds custom-sized components in a stack in the editor pane. This does not replace any native modules but simply adds layers on top of the editor pane. We use this for the Action Bar and GitHub Push components. |
 | `editor-editor` | replaces the plain text editor with a custom editor. We use this for all of our editors, including Markdown, Code, and Plus. |
+| `themes` | replaces the default css styles with a custom set of styles.
 
 ## Next Steps
 
