@@ -14,6 +14,20 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  # Use the lowest log level to ensure availability of diagnostic information
+  # when problems arise.
+  config.log_level = :debug
+
+  # Prepend all log lines with the following tags.
+  config.log_tags = [ :request_id ]
+
+  MAX_LOG_MEGABYTES = 50
+  config.logger = ActiveSupport::Logger.new(config.paths['log'].first, 1, MAX_LOG_MEGABYTES * 1024 * 1024)
+
+  require 'custom_log_formatter'
+  config.log_formatter = CustomLogFormatter.new
+  config.logger.formatter = config.log_formatter
+
   # Attempt to read encrypted secrets from `config/secrets.yml.enc`.
   # Requires an encryption key in `ENV["RAILS_MASTER_KEY"]` or
   # `config/secrets.yml.key`.
@@ -47,13 +61,6 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
-  # Use the lowest log level to ensure availability of diagnostic information
-  # when problems arise.
-  config.log_level = :debug
-
-  # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
-
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
@@ -72,19 +79,6 @@ Rails.application.configure do
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
-
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
-
-  # Use a different logger for distributed setups.
-  # require 'syslog/logger'
-  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
-  end
 
   # Do not dump schema after migrations.
   # config.active_record.dump_schema_after_migration = false

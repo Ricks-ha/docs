@@ -12,6 +12,13 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  MAX_LOG_MEGABYTES = 1
+  config.logger = ActiveSupport::Logger.new(config.paths['log'].first, 1, MAX_LOG_MEGABYTES * 1024 * 1024)
+
+  require 'custom_log_formatter'
+  config.log_formatter = CustomLogFormatter.new
+  config.logger.formatter = config.log_formatter
+
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
