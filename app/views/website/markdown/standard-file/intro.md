@@ -12,7 +12,7 @@ Please visit [standardfile.org](https://standardfile.org) for the full specifica
 
 ## Next Steps
 
-Check out the [client development guide](/standard-file/client-development) for a practical guide to developing an application on top of Standard File.
+Check out the [client development guide](/standard-file/client-development-guide) for a practical guide to developing an application on top of Standard File.
 
 See [Standard Notes Developer Resources](https://standardnotes.org/developers).
 
