@@ -81,9 +81,7 @@ These instructions make the following assumptions:
 6. Run the app service to compile the assets:
    ``` bash
    $ docker-compose -f docker-compose.yml -f docker-compose.production.yml up app
-   $ docker ps
-   $ docker exec -it {container ID/name of the app service} /bin/bash
-   app> bundle exec rake assets:precompile
+   $ docker-compose exec app bundle exec rake assets:precompile
    ```
 
    At this point the precompiled assets are stored in the `public/`
@@ -102,9 +100,7 @@ These instructions make the following assumptions:
 
 7. Login to the `app` service to initialize project:
    ``` bash
-   $ docker ps
-   $ docker exec -it {container ID/name of the app service} /bin/bash
-   app> bundle exec rake db:create db:migrate
+   $ docker-compose exec app bundle exec rake db:create db:migrate
    ```
 
 8. Access the server locally:
@@ -125,8 +121,9 @@ These instructions make the following assumptions:
 9. You're done!
 
 ## Using your new server
+
 You can immediately start using your new server by using the Standard Notes app at https://app.standardnotes.org.
 
-In the Account menu, enter the address of your new server in "Sync Server Domain" under "Advanced Options".
+In the account menu, choose Advanced Options when signing in to specify your server.
 
 Then, register for a new account, and begin using your private new secure Standard File server!
