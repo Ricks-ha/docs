@@ -52,11 +52,11 @@ These instructions make the following assumptions:
    SECRET_KEY_BASE=use "bundle exec rake secret"
    RAILS_SERVE_STATIC_FILES=true
 
-   DB_HOST=localhost
-   DB_PORT=3306
-   DB_DATABASE=items
-   DB_USERNAME=root
-   DB_PASSWORD=
+   DB_HOST: db
+   DB_PORT: 3306
+   DB_DATABASE: stadardfile
+   DB_USERNAME: root
+   DB_PASSWORD: secret123
 
    SALT_PSEUDO_NONCE=use "bundle exec rake secret"
    ```
